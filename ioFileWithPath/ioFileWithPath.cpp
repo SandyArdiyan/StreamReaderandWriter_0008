@@ -7,50 +7,51 @@ int main() {
 	string baris;
 	string NamaFile;
 
-	// membuka file dalam mode menulis
+	cout << "Masukan Nama File : ";
+	cin >> NamaFile;
+
+	// membuka file dalam mode menulis.
 	ofstream outfile;
 	// menunjuk ke sebuah nama file
-	outfile.open("contohfile.txt");
+	outfile.open(NamaFile + ".txt", ios::out);
 
 	cout << ">= Menulis file, \'q\' untuk keluar" << endl;
 
 	//unlimited loop untuk menulis
 	while (true) {
-		cout << "_";
-		// mendapatkan setiap karakter dalam satu baris
+		cout << "- ";
+		//mendapatkan setiap karakter dalam satu baris
 		getline(cin, baris);
-		//loop akan berhenti jika memasukan karakter q
+		//loop akan berhenti jika anda memasukan karakter q
 		if (baris == "q") break;
 		// menulis dan memasukan nilai dari 'baris' ke dalam file
 		outfile << baris << endl;
 	}
-	// selesai dalam menulis sekarang tutup filenya
-	outfile.close();
-
-	// Membuka file dalam mode membaca
-	ifstream infile;
-	// Menunjukan ke sebuah file
+	//selesai dalam menulis sekarang tutup filenya
 	outfile.close();
 
 
+	//Membuka file dalam mode membaca
 	ifstream infile;
-	// menunjuk ke sebuah file
+
+	//menunjuk ke sebuah file
 	infile.open(NamaFile + ".txt", ios::in);
 
 	cout << endl << ">= Membuka dan membaca file " << endl;
-	// jika file ada maka
+	//jika file ada maka
 	if (infile.is_open())
 	{
-		// melakukan perulangan setiap baris
+		//melakukan perulangan setiap baris
 		while (getline(infile, baris))
 		{
-			// dan tampilkan di sini
-			cout << baris << 'n';
+			//dan tampilkan di sini
+			cout << baris << '\n';
 		}
-		// tutup file tersebut setelah selesai
+		//tutup file tersebut setelah selesai
 		infile.close();
+
 	}
-	// jika tidak di temukan file maka akan menampilkan ini
-	else cout << "Unable to open file";
+	//jika tidak ditemukan file maka akan menampilkan ini
+	else cout << "unable to open file";
 	return 0;
 }
